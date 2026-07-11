@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Flowmark | Task Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Geist+Mono:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+            font-size: 20px;
+        }
+        .task-checkbox:checked + .checkbox-custom {
+            background-color: #3B5BDB;
+            border-color: #3B5BDB;
+        }
+        .task-checkbox:checked + .checkbox-custom::after {
+            content: 'check';
+            font-family: 'Material Symbols Outlined';
+            color: white;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #FAFAF9;
+        }
+        .geist-font {
+            font-family: 'Geist', sans-serif;
+        }
+        .mono-font {
+            font-family: 'Geist Mono', monospace;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#ffdad6",
+                      "inverse-on-surface": "#f1f1f0",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#f9f9f8",
+                      "on-error": "#ffffff",
+                      "inverse-primary": "#b8c3ff",
+                      "surface-container-highest": "#e2e2e2",
+                      "on-secondary-fixed-variant": "#4a4641",
+                      "on-secondary": "#ffffff",
+                      "surface-variant": "#e2e2e2",
+                      "on-tertiary-container": "#ece5e0",
+                      "fog": "#A8A29E",
+                      "cobalt-wash": "#EDF2FF",
+                      "on-tertiary-fixed": "#1e1b19",
+                      "surface-container-high": "#e8e8e7",
+                      "night-ink": "#F5F5F4",
+                      "paper": "#FAFAF9",
+                      "overdue-rust": "#C2410C",
+                      "on-tertiary": "#ffffff",
+                      "surface-container": "#eeeeed",
+                      "on-surface": "#1a1c1c",
+                      "on-secondary-container": "#66625d",
+                      "on-surface-variant": "#444654",
+                      "secondary-fixed-dim": "#ccc5bf",
+                      "graphite": "#57534E",
+                      "primary": "#1a40c2",
+                      "error": "#ba1a1a",
+                      "inverse-surface": "#2f3130",
+                      "surface-container-low": "#f3f4f3",
+                      "surface": "#FFFFFF",
+                      "outline-variant": "#c4c5d6",
+                      "surface-dim": "#dadad9",
+                      "tertiary-fixed-dim": "#ccc5c1",
+                      "secondary": "#625e59",
+                      "primary-fixed": "#dde1ff",
+                      "primary-fixed-dim": "#b8c3ff",
+                      "night-canvas": "#131110",
+                      "outline": "#747686",
+                      "surface-tint": "#3052d2",
+                      "hairline": "#E7E5E4",
+                      "tertiary-container": "#6b6663",
+                      "ink": "#1C1917",
+                      "tertiary-fixed": "#e8e1dd",
+                      "amber-signal": "#B45309",
+                      "on-primary-container": "#e2e5ff",
+                      "on-background": "#1a1c1c",
+                      "night-surface": "#1E1B19",
+                      "primary-container": "#3b5bdb",
+                      "on-secondary-fixed": "#1e1b17",
+                      "on-tertiary-fixed-variant": "#4a4643",
+                      "on-primary-fixed": "#001355",
+                      "secondary-fixed": "#e8e1db",
+                      "secondary-container": "#e5ded8",
+                      "background": "#f9f9f8",
+                      "tertiary": "#524e4b",
+                      "field-green": "#15803D",
+                      "on-primary-fixed-variant": "#0736ba",
+                      "cobalt": "#3B5BDB",
+                      "night-hairline": "#2C2926",
+                      "on-error-container": "#93000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "md": "12px",
+                      "detail-width": "400px",
+                      "xxl": "32px",
+                      "huge": "48px",
+                      "sidebar-width": "240px",
+                      "lg": "16px",
+                      "xl": "24px",
+                      "content-max-width": "760px",
+                      "base": "4px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "mono-label": ["Geist Mono"],
+                      "body-secondary": ["Pretendard"],
+                      "task-title": ["Pretendard"],
+                      "screen-title": ["Geist"],
+                      "section-label-korean": ["Pretendard"],
+                      "section-label-latin": ["Geist"],
+                      "body-primary": ["Pretendard"]
+              },
+              "fontSize": {
+                      "mono-label": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "body-secondary": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "task-title": ["15px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                      "screen-title": ["22px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "section-label-korean": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "section-label-latin": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "body-primary": ["15px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="flex min-h-screen">
+<!-- Sidebar -->
+<aside class="w-sidebar-width h-screen sticky left-0 top-0 bg-surface border-r border-hairline flex flex-col p-lg shrink-0">
+<div class="mb-huge">
+<h1 class="font-screen-title text-screen-title text-cobalt tracking-tight">Flowmark</h1>
+<p class="font-section-label-korean text-graphite mt-xs">박지훈 님, 안녕하세요</p>
+</div>
+<nav class="flex-1 flex flex-col gap-xs">
+<div class="flex items-center gap-sm bg-cobalt-wash text-cobalt rounded-lg h-8 px-md transition-colors">
+<span class="material-symbols-outlined" data-icon="inbox">inbox</span>
+<span class="font-section-label-korean font-medium">모든 할 일</span>
+</div>
+<div class="flex items-center gap-sm text-secondary hover:bg-surface-container transition-colors rounded-lg h-8 px-md cursor-pointer">
+<span class="material-symbols-outlined" data-icon="today">today</span>
+<span class="font-section-label-korean">오늘</span>
+</div>
+<div class="flex items-center gap-sm text-secondary hover:bg-surface-container transition-colors rounded-lg h-8 px-md cursor-pointer">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-section-label-korean">예정된 작업</span>
+</div>
+<div class="flex items-center gap-sm text-secondary hover:bg-surface-container transition-colors rounded-lg h-8 px-md cursor-pointer">
+<span class="material-symbols-outlined" data-icon="folder">folder</span>
+<span class="font-section-label-korean">프로젝트</span>
+</div>
+<div class="flex items-center gap-sm text-secondary hover:bg-surface-container transition-colors rounded-lg h-8 px-md cursor-pointer">
+<span class="material-symbols-outlined" data-icon="archive">archive</span>
+<span class="font-section-label-korean">아카이브</span>
+</div>
+</nav>
+<div class="mt-auto flex flex-col gap-xs">
+<button class="w-full bg-cobalt text-white rounded-lg h-10 font-section-label-korean font-medium mb-lg active:translate-y-[1px] transition-transform flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                새 작업 추가
+            </button>
+<div class="flex items-center gap-sm text-secondary hover:bg-surface-container transition-colors rounded-lg h-8 px-md cursor-pointer">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-section-label-korean">설정</span>
+</div>
+<div class="flex items-center gap-sm text-secondary hover:bg-surface-container transition-colors rounded-lg h-8 px-md cursor-pointer">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-section-label-korean">도움말</span>
+</div>
+</div>
+</aside>
+<!-- Main Task List Container -->
+<main class="flex-1 bg-paper flex flex-col overflow-hidden">
+<!-- Top App Bar -->
+<header class="w-full sticky top-0 z-40 bg-paper border-b border-hairline flex justify-between items-center h-16 px-xl shrink-0">
+<div class="flex items-center gap-lg flex-1">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-fog pointer-events-none">search</span>
+<input class="w-full h-9 bg-surface-container border-none rounded-lg pl-10 pr-md text-body-secondary focus:ring-2 focus:ring-cobalt/20 transition-all placeholder:text-fog" placeholder="검색어 입력..." type="text"/>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-graphite font-body-secondary hover:text-ink transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">filter_list</span> 필터
+                    </button>
+<button class="text-graphite font-body-secondary hover:text-ink transition-colors flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">sort</span> 정렬
+                    </button>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="bg-surface border border-hairline px-md h-9 rounded-lg text-body-secondary font-medium hover:bg-surface-container active:scale-[0.98] transition-all flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">share</span> 공유
+                </button>
+<div class="w-hairline h-6 bg-hairline"></div>
+<button class="p-xs text-graphite hover:text-ink">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-xs text-graphite hover:text-ink">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden ml-xs border border-hairline">
+<img class="w-full h-full object-cover" data-alt="A clean, professional headshot of a Korean male in his late 20s wearing a simple white linen shirt, against a soft-focus minimalist office background. The lighting is natural and airy, reflecting a high-end light-mode UI aesthetic with clean lines and soft shadows. The overall mood is reliable, calm, and organized, consistent with a premium editorial design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvXtAEqZ9zqA0fRemeD1BRQl-GetDU8cUv6MRWGtf2DdYuzEX9_CRl7e2QE8Ql2H7rNt_cQCZccY0hvG3TPCx9sg2z736UEgMvUb7kzQfQn19yuOtazxfFMjbyH8dE4_hJ9DgTdrHcR-LnjC_bhJ6yKCm-kjoFr3PkjsSaTLOrFC1uBhdXQ7yote2sL43cGGU0UR3PooK9bBiuBX1-rVlntgVLZwAJTsoSBYXNoyrIdSK61fuxE-hSF-3FLYnZ5aymFfrBqTpq9F8"/>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto px-xl py-xl">
+<div class="max-w-content-max-width">
+<h2 class="font-screen-title text-screen-title text-ink mb-huge">모든 할 일</h2>
+<!-- Quick Capture -->
+<div class="mb-xl relative group">
+<input class="w-full border-b border-hairline bg-transparent py-md pr-xxl text-task-title focus:ring-0 focus:border-cobalt transition-colors placeholder:text-fog" placeholder="새 작업 추가 (Enter)" type="text"/>
+<span class="absolute right-xs top-1/2 -translate-y-1/2 text-fog font-mono-label opacity-0 group-focus-within:opacity-100 transition-opacity">⏎</span>
+</div>
+<!-- Task List -->
+<div class="flex flex-col">
+<!-- Selected Task -->
+<div class="flex items-center gap-md py-md px-md bg-cobalt-wash rounded-lg -mx-md group cursor-pointer border border-transparent hover:border-cobalt/10 transition-all">
+<div class="relative w-5 h-5 flex items-center justify-center">
+<input class="task-checkbox appearance-none w-5 h-5 border-2 border-hairline rounded-full cursor-pointer hover:border-cobalt transition-colors" type="checkbox"/>
+<span class="checkbox-custom absolute inset-0 rounded-full pointer-events-none"></span>
+</div>
+<span class="flex-1 font-task-title text-task-title text-ink">분기 보고서 초안 작성</span>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-overdue-rust text-[18px]" style="font-variation-settings: 'FILL' 1;">flag</span>
+<span class="font-mono-label text-mono-label text-overdue-rust bg-orange-50 px-xs py-[2px] rounded">7월 14일</span>
+</div>
+</div>
+<!-- Task 2 -->
+<div class="flex items-center gap-md py-md px-md border-b border-hairline group cursor-pointer hover:bg-surface-container-low transition-all">
+<div class="relative w-5 h-5 flex items-center justify-center">
+<input class="task-checkbox appearance-none w-5 h-5 border-2 border-hairline rounded-full cursor-pointer hover:border-cobalt transition-colors" type="checkbox"/>
+<span class="checkbox-custom absolute inset-0 rounded-full pointer-events-none"></span>
+</div>
+<span class="flex-1 font-task-title text-task-title text-ink">디자인 시스템 문서화 업데이트</span>
+<div class="flex items-center gap-sm">
+<span class="font-mono-label text-mono-label text-graphite bg-surface-container px-xs py-[2px] rounded">내일</span>
+</div>
+</div>
+<!-- Task 3 -->
+<div class="flex items-center gap-md py-md px-md border-b border-hairline group cursor-pointer hover:bg-surface-container-low transition-all">
+<div class="relative w-5 h-5 flex items-center justify-center">
+<input class="task-checkbox appearance-none w-5 h-5 border-2 border-hairline rounded-full cursor-pointer hover:border-cobalt transition-colors" type="checkbox"/>
+<span class="checkbox-custom absolute inset-0 rounded-full pointer-events-none"></span>
+</div>
+<span class="flex-1 font-task-title text-task-title text-ink">주간 팀 회의록 정리 및 공유</span>
+<div class="flex items-center gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-fog text-[18px]">drag_indicator</span>
+</div>
+</div>
+<!-- Task 4 -->
+<div class="flex items-center gap-md py-md px-md border-b border-hairline group cursor-pointer hover:bg-surface-container-low transition-all">
+<div class="relative w-5 h-5 flex items-center justify-center">
+<input checked="" class="task-checkbox appearance-none w-5 h-5 border-2 border-hairline rounded-full cursor-pointer hover:border-cobalt transition-colors" type="checkbox"/>
+<span class="checkbox-custom absolute inset-0 rounded-full pointer-events-none"></span>
+</div>
+<span class="flex-1 font-task-title text-task-title text-fog line-through">클라이언트 피드백 1차 반영</span>
+<div class="flex items-center gap-sm">
+<span class="font-mono-label text-mono-label text-fog">완료</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Right Detail Panel -->
+<aside class="w-detail-width h-screen sticky right-0 top-0 bg-surface border-l border-hairline flex flex-col shrink-0">
+<!-- Panel Header Actions -->
+<div class="h-16 px-xl flex justify-between items-center border-b border-hairline">
+<button class="p-xs text-graphite hover:text-ink transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="flex items-center gap-md">
+<button class="p-xs text-graphite hover:text-ink">
+<span class="material-symbols-outlined">star</span>
+</button>
+<button class="p-xs text-graphite hover:text-ink">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Detail Content -->
+<div class="flex-1 overflow-y-auto p-xl">
+<!-- Editable Title -->
+<textarea class="w-full text-[18px] font-semibold text-ink border-none focus:ring-0 p-0 resize-none leading-snug mb-md overflow-hidden" rows="2">분기 보고서 초안 작성</textarea>
+<!-- Properties -->
+<div class="flex flex-col gap-xs mb-huge">
+<!-- Status Row -->
+<div class="flex items-center h-10 gap-lg group">
+<div class="w-xxl flex items-center gap-sm shrink-0">
+<span class="material-symbols-outlined text-graphite text-[18px]">radio_button_checked</span>
+<span class="font-body-secondary text-graphite">상태</span>
+</div>
+<div class="flex-1 flex items-center px-sm py-xs hover:bg-surface-container rounded cursor-pointer transition-colors">
+<span class="font-body-secondary text-ink">진행 중</span>
+<span class="material-symbols-outlined text-fog ml-auto text-[16px]">expand_more</span>
+</div>
+</div>
+<!-- Priority Row -->
+<div class="flex items-center h-10 gap-lg group">
+<div class="w-xxl flex items-center gap-sm shrink-0">
+<span class="material-symbols-outlined text-overdue-rust text-[18px]" style="font-variation-settings: 'FILL' 1;">flag</span>
+<span class="font-body-secondary text-graphite">우선순위</span>
+</div>
+<div class="flex-1 flex items-center px-sm py-xs hover:bg-surface-container rounded cursor-pointer transition-colors">
+<span class="font-body-secondary text-overdue-rust">높음</span>
+<span class="material-symbols-outlined text-fog ml-auto text-[16px]">expand_more</span>
+</div>
+</div>
+<!-- Date Row -->
+<div class="flex items-center h-10 gap-lg group">
+<div class="w-xxl flex items-center gap-sm shrink-0">
+<span class="material-symbols-outlined text-graphite text-[18px]">event</span>
+<span class="font-body-secondary text-graphite">마감일</span>
+</div>
+<div class="flex-1 flex items-center px-sm py-xs hover:bg-surface-container rounded cursor-pointer transition-colors">
+<span class="font-mono-label text-mono-label text-ink">7월 14일 (월) 오후 3:00</span>
+</div>
+</div>
+</div>
+<!-- Description -->
+<div class="mb-huge">
+<div class="flex items-center gap-sm text-graphite mb-sm">
+<span class="material-symbols-outlined text-[18px]">notes</span>
+<span class="font-section-label-korean font-medium">설명</span>
+</div>
+<textarea class="w-full min-h-[120px] bg-transparent border-none focus:ring-0 p-0 text-body-primary placeholder:text-fog resize-none" placeholder="설명 추가…"></textarea>
+</div>
+<!-- Subtasks (Editorial Addition for Quality) -->
+<div>
+<div class="flex items-center gap-sm text-graphite mb-sm">
+<span class="material-symbols-outlined text-[18px]">checklist</span>
+<span class="font-section-label-korean font-medium">하위 작업</span>
+</div>
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-sm py-xs group">
+<input class="task-checkbox appearance-none w-4 h-4 border border-hairline rounded cursor-pointer checked:bg-cobalt" type="checkbox"/>
+<span class="text-body-secondary text-graphite group-hover:text-ink transition-colors">데이터 수집 및 정리</span>
+</div>
+<div class="flex items-center gap-sm py-xs group">
+<input class="task-checkbox appearance-none w-4 h-4 border border-hairline rounded cursor-pointer" type="checkbox"/>
+<span class="text-body-secondary text-graphite group-hover:text-ink transition-colors">그래프 및 차트 생성</span>
+</div>
+<button class="text-fog hover:text-cobalt text-body-secondary mt-xs flex items-center gap-xs transition-colors">
+<span class="material-symbols-outlined text-[16px]">add</span> 하위 작업 추가
+                    </button>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="p-xl border-t border-hairline bg-surface mt-auto">
+<div class="flex flex-col gap-md">
+<div class="font-mono-label text-mono-label text-graphite opacity-60">
+                    생성 7월 10일 · 수정 오늘
+                </div>
+<button class="w-fit text-overdue-rust font-body-secondary hover:bg-red-50 px-md h-9 -ml-md rounded-lg flex items-center gap-sm transition-all active:translate-y-[1px]">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+                    휴지통으로 이동
+                </button>
+</div>
+</footer>
+</aside>
+<script>
+        // Auto-expand textarea
+        const textareas = document.querySelectorAll('textarea');
+        textareas.forEach(textarea => {
+            textarea.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = this.scrollHeight + 'px';
+            });
+            // Initial call
+            textarea.style.height = textarea.scrollHeight + 'px';
+        });
+
+        // Simple check interaction
+        const checkboxes = document.querySelectorAll('.task-checkbox');
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', function() {
+                const text = this.closest('div').nextElementSibling;
+                if(this.checked) {
+                    text.classList.add('text-fog', 'line-through');
+                    text.classList.remove('text-ink');
+                } else {
+                    text.classList.remove('text-fog', 'line-through');
+                    text.classList.add('text-ink');
+                }
+            });
+        });
+    </script>
+</body></html>

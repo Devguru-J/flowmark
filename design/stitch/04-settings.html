@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Flowmark - 설정</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap');
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+            font-size: 18px;
+        }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Micro-interactions */
+        .press-effect:active {
+            transform: translateY(1px);
+        }
+        
+        .transition-spring {
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#1a40c2",
+                      "on-error-container": "#93000a",
+                      "on-surface": "#1a1c1c",
+                      "amber-signal": "#B45309",
+                      "field-green": "#15803D",
+                      "inverse-on-surface": "#f1f1f0",
+                      "surface-container-highest": "#e2e2e2",
+                      "error": "#ba1a1a",
+                      "on-error": "#ffffff",
+                      "surface-tint": "#3052d2",
+                      "inverse-surface": "#2f3130",
+                      "surface": "#FFFFFF",
+                      "on-primary-fixed": "#001355",
+                      "tertiary": "#524e4b",
+                      "tertiary-fixed-dim": "#ccc5c1",
+                      "surface-container-low": "#f3f4f3",
+                      "on-secondary-container": "#66625d",
+                      "inverse-primary": "#b8c3ff",
+                      "tertiary-fixed": "#e8e1dd",
+                      "graphite": "#57534E",
+                      "on-surface-variant": "#444654",
+                      "night-surface": "#1E1B19",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-container": "#ece5e0",
+                      "secondary-fixed-dim": "#ccc5bf",
+                      "on-tertiary-fixed-variant": "#4a4643",
+                      "night-hairline": "#2C2926",
+                      "on-tertiary": "#ffffff",
+                      "ink": "#1C1917",
+                      "background": "#f9f9f8",
+                      "surface-variant": "#e2e2e2",
+                      "secondary": "#625e59",
+                      "primary-container": "#3b5bdb",
+                      "night-canvas": "#131110",
+                      "cobalt": "#3B5BDB",
+                      "on-tertiary-fixed": "#1e1b19",
+                      "secondary-container": "#e5ded8",
+                      "on-primary-container": "#e2e5ff",
+                      "fog": "#A8A29E",
+                      "tertiary-container": "#6b6663",
+                      "paper": "#FAFAF9",
+                      "surface-container-high": "#e8e8e7",
+                      "secondary-fixed": "#e8e1db",
+                      "surface-bright": "#f9f9f8",
+                      "outline-variant": "#c4c5d6",
+                      "primary-fixed-dim": "#b8c3ff",
+                      "surface-container": "#eeeeed",
+                      "on-primary-fixed-variant": "#0736ba",
+                      "outline": "#747686",
+                      "on-secondary-fixed-variant": "#4a4641",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed": "#dde1ff",
+                      "surface-dim": "#dadad9",
+                      "hairline": "#E7E5E4",
+                      "night-ink": "#F5F5F4",
+                      "error-container": "#ffdad6",
+                      "overdue-rust": "#C2410C",
+                      "on-background": "#1a1c1c",
+                      "on-secondary-fixed": "#1e1b17",
+                      "cobalt-wash": "#EDF2FF"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xxl": "32px",
+                      "md": "12px",
+                      "lg": "16px",
+                      "xs": "4px",
+                      "sm": "8px",
+                      "xl": "24px",
+                      "content-max-width": "760px",
+                      "sidebar-width": "240px",
+                      "huge": "48px",
+                      "base": "4px",
+                      "detail-width": "400px"
+              },
+              "fontFamily": {
+                      "task-title": ["Pretendard"],
+                      "mono-label": ["Geist Mono"],
+                      "section-label-korean": ["Pretendard"],
+                      "screen-title": ["Geist"],
+                      "body-primary": ["Pretendard"],
+                      "section-label-latin": ["Geist"],
+                      "body-secondary": ["Pretendard"]
+              },
+              "fontSize": {
+                      "task-title": ["15px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                      "mono-label": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "section-label-korean": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "screen-title": ["22px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "body-primary": ["15px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "section-label-latin": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "body-secondary": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-ink font-body-primary selection:bg-cobalt-wash selection:text-cobalt">
+<div class="flex min-h-screen">
+<!-- Sidebar Shell (Shared Component: SideNavBar) -->
+<aside class="w-sidebar-width h-screen sticky left-0 top-0 bg-surface border-r border-hairline flex flex-col p-lg">
+<!-- Brand Header -->
+<div class="mb-xxl px-md">
+<h1 class="font-screen-title text-screen-title text-cobalt tracking-tight">Flowmark</h1>
+<p class="text-secondary font-body-secondary mt-xs">박지훈 님, 안녕하세요</p>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-sm text-secondary h-8 px-md hover:bg-surface-container transition-colors duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-secondary group-hover:text-ink">inbox</span>
+<span class="font-section-label-latin text-section-label-latin">모든 할 일</span>
+</a>
+<a class="flex items-center gap-sm text-secondary h-8 px-md hover:bg-surface-container transition-colors duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-secondary group-hover:text-ink">today</span>
+<span class="font-section-label-latin text-section-label-latin">오늘</span>
+</a>
+<a class="flex items-center gap-sm text-secondary h-8 px-md hover:bg-surface-container transition-colors duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-secondary group-hover:text-ink">calendar_month</span>
+<span class="font-section-label-latin text-section-label-latin">예정된 작업</span>
+</a>
+<a class="flex items-center gap-sm text-secondary h-8 px-md hover:bg-surface-container transition-colors duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-secondary group-hover:text-ink">folder</span>
+<span class="font-section-label-latin text-section-label-latin">프로젝트</span>
+</a>
+<a class="flex items-center gap-sm text-secondary h-8 px-md hover:bg-surface-container transition-colors duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-secondary group-hover:text-ink">archive</span>
+<span class="font-section-label-latin text-section-label-latin">아카이브</span>
+</a>
+</nav>
+<!-- Footer Links -->
+<div class="mt-auto pt-lg border-t border-hairline space-y-1">
+<!-- ACTIVE STATE: 설정 (Settings) -->
+<a class="flex items-center gap-sm bg-cobalt-wash text-cobalt rounded-lg h-8 px-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-section-label-latin text-section-label-latin">설정</span>
+</a>
+<a class="flex items-center gap-sm text-secondary h-8 px-md hover:bg-surface-container transition-colors duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined text-secondary group-hover:text-ink">help</span>
+<span class="font-section-label-latin text-section-label-latin">도움말</span>
+</a>
+<div class="flex items-center gap-sm h-8 px-md mt-sm">
+<div class="w-6 h-6 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, professional close-up portrait of a young Korean professional with a friendly expression. Soft daylight studio lighting creates a warm and modern feel, matching a minimal editorial UI aesthetic. High-quality photographic style with a shallow depth of field, highlighting natural features against a neutral warm background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-tohfsRgUy0CR8j1itAk0bwO6sazP4AOggrCQLjsAZlnjXhjdSzuy9td2KmxS_Cx0Z9wXD7BtxQgWgzzQ7lIqwKNbyDmw9tcZi0L-46PANMQJaFVOoRKzp6EroppV5X_LuTFhV_RbX9NOm94PoqbmgaSKImI0xuwbbJAGHBp3RqiuSWkPBfVDpYCsQSIYU1t-Zd1x5tE5w-c_3ftzePgdYQ5wapSL0WotHrom897liF5yYCPNEPu6mPDYDkEonKzjMOedhInFAZU"/>
+</div>
+<span class="text-body-secondary font-body-secondary text-graphite">박지훈</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 min-w-0 bg-paper overflow-y-auto">
+<!-- Content Track: Left-aligned, max-width 640px -->
+<div class="max-w-[640px] px-xxl py-huge">
+<!-- Screen Header -->
+<header class="mb-huge">
+<h2 class="font-screen-title text-screen-title text-ink">설정</h2>
+</header>
+<div class="space-y-huge">
+<!-- Section: 화면 (Display) -->
+<section>
+<h3 class="font-section-label-korean text-section-label-korean text-graphite mb-sm">화면</h3>
+<div class="border-t border-hairline">
+<!-- Theme Row -->
+<div class="flex items-center justify-between h-[48px] border-b border-hairline">
+<span class="text-body-primary font-body-primary text-ink">테마</span>
+<div class="flex bg-surface-container-low p-[2px] rounded-lg border border-hairline">
+<button class="px-sm py-1 rounded-[6px] text-body-secondary font-body-secondary text-secondary hover:text-ink transition-colors press-effect">라이트</button>
+<button class="px-sm py-1 rounded-[6px] text-body-secondary font-body-secondary text-secondary hover:text-ink transition-colors press-effect">다크</button>
+<!-- Active State -->
+<button class="px-sm py-1 rounded-[6px] text-body-secondary font-body-secondary bg-surface text-cobalt shadow-sm border border-hairline/50 press-effect">시스템</button>
+</div>
+</div>
+<!-- Language Row -->
+<div class="flex items-center justify-between h-[48px] border-b border-hairline">
+<span class="text-body-primary font-body-primary text-ink">언어</span>
+<button class="flex items-center gap-xs text-body-secondary font-body-secondary text-secondary px-sm py-1 hover:bg-surface-container rounded transition-colors press-effect">
+                                    한국어
+                                    <span class="material-symbols-outlined text-[16px]">unfold_more</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Section: 계정 (Account) -->
+<section>
+<h3 class="font-section-label-korean text-section-label-korean text-graphite mb-sm">계정</h3>
+<div class="border-t border-hairline">
+<!-- Email Row -->
+<div class="flex items-center justify-between h-[48px] border-b border-hairline">
+<span class="text-body-primary font-body-primary text-ink">이메일</span>
+<span class="font-mono-label text-[13px] text-graphite tracking-tight select-all">kim.seoyeon@example.com</span>
+</div>
+<!-- Logout Row -->
+<div class="flex items-center justify-between h-[48px] border-b border-hairline">
+<span class="text-body-primary font-body-primary text-ink">로그아웃</span>
+<button class="text-body-secondary font-body-secondary text-overdue-rust hover:underline underline-offset-4 px-sm py-1 press-effect">
+                                    로그아웃
+                                </button>
+</div>
+</div>
+</section>
+</div>
+<!-- Subtle Decorative Background (Atmospheric Shader) -->
+<div class="mt-huge pt-huge opacity-40 pointer-events-none">
+
+<p class="mt-sm text-[11px] font-mono-label text-fog uppercase tracking-widest text-center">Flowmark Editorial Engine v2.4</p>
+</div>
+</div>
+</main>
+<!-- Right Side Detail Track (Empty/Spaced for 3-column rhythm as per style guidance) -->
+<div class="hidden xl:block w-[120px] bg-paper"></div>
+</div>
+<script>
+        // Simple logic for the segmented control interaction
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // If it's part of the theme toggle
+                if (this.parentElement.classList.contains('bg-surface-container-low')) {
+                    this.parentElement.querySelectorAll('button').forEach(b => {
+                        b.className = "px-sm py-1 rounded-[6px] text-body-secondary font-body-secondary text-secondary hover:text-ink transition-colors press-effect";
+                    });
+                    this.className = "px-sm py-1 rounded-[6px] text-body-secondary font-body-secondary bg-surface text-cobalt shadow-sm border border-hairline/50 press-effect";
+                }
+            });
+        });
+    </script>
+</body></html>

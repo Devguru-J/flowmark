@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Flowmark - Productivity Workspace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+            font-size: 18px;
+        }
+        .task-row:hover .drag-handle {
+            opacity: 1;
+        }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#c4c5d6",
+                      "surface-tint": "#3052d2",
+                      "secondary-fixed": "#e8e1db",
+                      "surface-container-high": "#e8e8e7",
+                      "on-primary-fixed-variant": "#0736ba",
+                      "on-tertiary-container": "#ece5e0",
+                      "on-tertiary": "#ffffff",
+                      "night-canvas": "#131110",
+                      "surface-container": "#eeeeed",
+                      "secondary": "#625e59",
+                      "inverse-primary": "#b8c3ff",
+                      "on-secondary-fixed-variant": "#4a4641",
+                      "surface-dim": "#dadad9",
+                      "outline": "#747686",
+                      "tertiary-fixed-dim": "#ccc5c1",
+                      "surface-container-lowest": "#ffffff",
+                      "primary": "#1a40c2",
+                      "on-secondary-container": "#66625d",
+                      "tertiary": "#524e4b",
+                      "on-primary-container": "#e2e5ff",
+                      "on-background": "#1a1c1c",
+                      "surface-bright": "#f9f9f8",
+                      "field-green": "#15803D",
+                      "surface-container-highest": "#e2e2e2",
+                      "paper": "#FAFAF9",
+                      "night-surface": "#1E1B19",
+                      "primary-fixed": "#dde1ff",
+                      "inverse-on-surface": "#f1f1f0",
+                      "error": "#ba1a1a",
+                      "secondary-fixed-dim": "#ccc5bf",
+                      "cobalt-wash": "#EDF2FF",
+                      "night-ink": "#F5F5F4",
+                      "surface-container-low": "#f3f4f3",
+                      "on-tertiary-fixed": "#1e1b19",
+                      "on-tertiary-fixed-variant": "#4a4643",
+                      "tertiary-container": "#6b6663",
+                      "on-error-container": "#93000a",
+                      "overdue-rust": "#C2410C",
+                      "primary-container": "#3b5bdb",
+                      "on-error": "#ffffff",
+                      "inverse-surface": "#2f3130",
+                      "amber-signal": "#B45309",
+                      "error-container": "#ffdad6",
+                      "background": "#f9f9f8",
+                      "on-primary-fixed": "#001355",
+                      "secondary-container": "#e5ded8",
+                      "cobalt": "#3B5BDB",
+                      "tertiary-fixed": "#e8e1dd",
+                      "fog": "#A8A29E",
+                      "on-surface": "#1a1c1c",
+                      "primary-fixed-dim": "#b8c3ff",
+                      "on-secondary": "#ffffff",
+                      "night-hairline": "#2C2926",
+                      "surface-variant": "#e2e2e2",
+                      "surface": "#FFFFFF",
+                      "on-secondary-fixed": "#1e1b17",
+                      "on-surface-variant": "#444654",
+                      "ink": "#1C1917",
+                      "graphite": "#57534E",
+                      "hairline": "#E7E5E4",
+                      "on-primary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "content-max-width": "760px",
+                      "lg": "16px",
+                      "xxl": "32px",
+                      "xl": "24px",
+                      "huge": "48px",
+                      "detail-width": "400px",
+                      "xs": "4px",
+                      "sidebar-width": "240px",
+                      "base": "4px",
+                      "md": "12px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "task-title": ["Pretendard"],
+                      "screen-title": ["Geist"],
+                      "section-label-korean": ["Pretendard"],
+                      "body-primary": ["Pretendard"],
+                      "section-label-latin": ["Geist"],
+                      "body-secondary": ["Pretendard"],
+                      "mono-label": ["Geist Mono"]
+              },
+              "fontSize": {
+                      "task-title": ["15px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                      "screen-title": ["22px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "section-label-korean": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                      "body-primary": ["15px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "section-label-latin": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "body-secondary": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "mono-label": ["12px", {"lineHeight": "16px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-paper text-ink font-body-primary overflow-hidden">
+<!-- App Shell: 3-column Layout -->
+<div class="flex h-screen w-full">
+<!-- Column 1: Sidebar (240px) -->
+<aside class="w-[240px] h-full flex flex-col bg-paper border-r border-hairline p-md z-20">
+<!-- Brand Logo -->
+<div class="flex items-center gap-sm px-sm py-md mb-xl">
+<span class="font-screen-title text-screen-title text-cobalt tracking-tight">Flowmark</span>
+</div>
+<!-- Primary Navigation -->
+<nav class="flex-1 space-y-[2px]">
+<!-- Inbox -->
+<a class="flex items-center justify-between px-sm h-[32px] rounded group transition-colors hover:bg-surface-container-low text-graphite font-medium" href="#">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-graphite group-hover:text-ink">inbox</span>
+<span class="font-section-label-korean">받은함</span>
+</div>
+<span class="font-mono-label text-fog">4</span>
+</a>
+<!-- Today (Active State) -->
+<a class="flex items-center justify-between px-sm h-[32px] rounded bg-cobalt-wash text-cobalt font-medium" href="#">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">today</span>
+<span class="font-section-label-korean">오늘</span>
+</div>
+<span class="font-mono-label">3</span>
+</a>
+<!-- Upcoming -->
+<a class="flex items-center justify-between px-sm h-[32px] rounded group transition-colors hover:bg-surface-container-low text-graphite font-medium" href="#">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-graphite group-hover:text-ink">calendar_month</span>
+<span class="font-section-label-korean">예정</span>
+</div>
+<span class="font-mono-label text-fog">7</span>
+</a>
+<!-- Section Label -->
+<div class="pt-xl pb-sm px-sm">
+<span class="font-section-label-latin text-fog uppercase tracking-widest text-[10px]">상태</span>
+</div>
+<!-- Status Groups -->
+<a class="flex items-center gap-sm px-sm h-[32px] rounded group transition-colors hover:bg-surface-container-low text-graphite" href="#">
+<span class="material-symbols-outlined text-fog group-hover:text-ink">radio_button_unchecked</span>
+<span class="font-section-label-korean">할 일</span>
+</a>
+<a class="flex items-center gap-sm px-sm h-[32px] rounded group transition-colors hover:bg-surface-container-low text-graphite" href="#">
+<span class="material-symbols-outlined text-amber-signal group-hover:text-ink">pending</span>
+<span class="font-section-label-korean">진행 중</span>
+</a>
+<a class="flex items-center gap-sm px-sm h-[32px] rounded group transition-colors hover:bg-surface-container-low text-graphite" href="#">
+<span class="material-symbols-outlined text-field-green group-hover:text-ink">check_circle</span>
+<span class="font-section-label-korean">완료</span>
+</a>
+</nav>
+<!-- Footer Navigation -->
+<div class="border-t border-hairline pt-md space-y-[2px]">
+<a class="flex items-center gap-sm px-sm h-[32px] rounded group transition-colors hover:bg-surface-container-low text-graphite" href="#">
+<span class="material-symbols-outlined">delete</span>
+<span class="font-section-label-korean">휴지통</span>
+</a>
+<a class="flex items-center gap-sm px-sm h-[32px] rounded group transition-colors hover:bg-surface-container-low text-graphite" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-section-label-korean">설정</span>
+</a>
+</div>
+</aside>
+<!-- Column 2: Content Canvas (Flexible List Track) -->
+<main class="flex-1 h-full bg-surface overflow-y-auto">
+<div class="max-w-[760px] mx-auto px-xxl pt-huge pb-xxl">
+<!-- Screen Header -->
+<header class="flex items-end gap-sm mb-xxl">
+<h1 class="font-screen-title text-screen-title text-ink">오늘</h1>
+<span class="font-mono-label text-fog mb-[3px]">3</span>
+</header>
+<!-- Quick Capture Input -->
+<div class="relative group mb-xl">
+<div class="flex items-center gap-sm pb-sm border-b border-hairline focus-within:border-cobalt transition-colors duration-200">
+<span class="material-symbols-outlined text-cobalt">add</span>
+<input class="w-full bg-transparent border-none focus:ring-0 p-0 text-body-primary placeholder:text-fog font-body-primary" placeholder="작업 추가…" type="text"/>
+<div class="flex items-center gap-xs px-xs py-[2px] bg-surface-container rounded border border-hairline">
+<span class="font-mono-label text-[10px] text-graphite uppercase">Enter</span>
+</div>
+</div>
+</div>
+<!-- Task List -->
+<div class="flex flex-col">
+<!-- Task 1: High Priority -->
+<div class="task-row group flex items-start gap-md py-md border-b border-hairline hover:bg-paper transition-colors duration-150 cursor-pointer">
+<div class="pt-[2px]">
+<button class="w-5 h-5 rounded-full border-2 border-outline-variant hover:border-cobalt transition-colors flex items-center justify-center group/check">
+<div class="w-2.5 h-2.5 rounded-full bg-cobalt scale-0 group-hover/check:scale-100 transition-transform"></div>
+</button>
+</div>
+<div class="flex-1 flex flex-col gap-[2px]">
+<span class="font-task-title text-task-title text-ink">분기 보고서 초안 작성</span>
+<div class="flex items-center gap-sm">
+<span class="flex items-center gap-[2px] text-overdue-rust">
+<span class="material-symbols-outlined text-[14px]">flag</span>
+<span class="font-section-label-korean">높음</span>
+</span>
+<span class="text-fog font-mono-label text-[11px]">•</span>
+<span class="font-mono-label text-fog">오후 3:00</span>
+</div>
+</div>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-sm">
+<button class="text-fog hover:text-ink"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+</div>
+<!-- Task 2: Standard -->
+<div class="task-row group flex items-start gap-md py-md border-b border-hairline hover:bg-paper transition-colors duration-150 cursor-pointer">
+<div class="pt-[2px]">
+<button class="w-5 h-5 rounded-full border-2 border-outline-variant hover:border-cobalt transition-colors flex items-center justify-center group/check">
+<div class="w-2.5 h-2.5 rounded-full bg-cobalt scale-0 group-hover/check:scale-100 transition-transform"></div>
+</button>
+</div>
+<div class="flex-1 flex flex-col gap-[2px]">
+<span class="font-task-title text-task-title text-ink">디자인 리뷰 피드백 정리</span>
+<div class="flex items-center gap-sm">
+<span class="font-mono-label text-fog">오후 5:30</span>
+</div>
+</div>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-fog hover:text-ink"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+</div>
+<!-- Task 3: Completed -->
+<div class="task-row group flex items-start gap-md py-md border-b border-hairline hover:bg-paper transition-colors duration-150 cursor-pointer">
+<div class="pt-[2px]">
+<button class="w-5 h-5 rounded-full bg-cobalt flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[14px] font-bold" style="font-variation-settings: 'wght' 700;">check</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col gap-[2px]">
+<span class="font-task-title text-task-title text-fog line-through">지출 결의서 제출</span>
+<div class="flex items-center gap-sm">
+<span class="font-section-label-korean text-fog bg-surface-container px-xs rounded">완료됨</span>
+</div>
+</div>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-fog hover:text-ink"><span class="material-symbols-outlined">more_horiz</span></button>
+</div>
+</div>
+</div>
+<!-- Atmospheric Placeholder for empty flow -->
+<div class="mt-huge py-xl flex flex-col items-center justify-center border-2 border-dashed border-hairline rounded-xl bg-paper/50">
+<div class="w-48 h-32 mb-xl opacity-20 filter grayscale" data-alt="A minimalist, high-end editorial 3D render of floating abstract paper sheets and graphite pencils in a soft-lit, serene workspace. The color palette is strictly off-white, light gray, and deep cobalt blue. Subtle geometric shadows create a sense of depth and tranquility. Clean lines and plenty of whitespace reflect a professional productivity tool aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDL_-ZMZ1e8D5yaS7wIR9h-4RNbnpwJM_XwATn1ILFU4Fu1tpqkVerCqRCdQT5c_sf2e_kp9Imn1PvIfdHfu10mlXcxVmIX64KXG0L-K3gXW5O8zkWkNXqobVHUaGAtKwNOyI-eBvYdf09N6UJgqMiX7bNs3b6VWyg_mJMn6AakcQmpudRznI2p9KQnrni2sWFJWuJU12oxDBwhY4CfFNgHCNpgsR0ed6B094bPq4NikI3n5XSiyFQo0LuaCKhd3XdoXAlo6guPX8A')"></div>
+<p class="font-section-label-korean text-fog">남은 작업이 모두 깔끔하게 정리되었습니다.</p>
+</div>
+</div>
+</main>
+<!-- Column 3: Detail Panel (400px) -->
+<aside class="w-[400px] h-full bg-surface border-l border-hairline flex flex-col items-center justify-center p-xl relative overflow-hidden">
+<!-- Subtle Background Shader/Graphic -->
+<div class="absolute inset-0 pointer-events-none opacity-[0.03]">
+<div class="w-full h-full bg-repeat opacity-20" style="background-image: radial-gradient(circle, #3B5BDB 1px, transparent 1px); background-size: 24px 24px;"></div>
+</div>
+<!-- Empty State Illustration/Typography -->
+<div class="z-10 text-center space-y-md max-w-[240px]">
+<div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-paper border border-hairline mb-md">
+<span class="material-symbols-outlined text-fog" style="font-size: 24px;">description</span>
+</div>
+<h3 class="font-screen-title text-[18px] text-ink">작업을 선택하세요</h3>
+<p class="font-body-secondary text-graphite">
+                    세부 사항을 확인하거나 수정하려면 목록에서 작업을 클릭하세요.
+                </p>
+<div class="pt-md">
+<div class="flex items-center justify-center gap-sm py-xs px-sm rounded-full bg-surface-container-low border border-hairline">
+<span class="font-mono-label text-[10px] text-fog">Shortcuts:</span>
+<div class="flex gap-xs">
+<span class="font-mono-label text-[10px] bg-white border border-hairline px-1 rounded">⌘</span>
+<span class="font-mono-label text-[10px] bg-white border border-hairline px-1 rounded">K</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- Micro-interaction Scripts -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const taskRows = document.querySelectorAll('.task-row');
+            
+            taskRows.forEach(row => {
+                row.addEventListener('click', () => {
+                    // Remove active state from all rows
+                    taskRows.forEach(r => r.classList.remove('bg-paper', 'border-cobalt-wash'));
+                    // Add active state to clicked row
+                    row.classList.add('bg-paper');
+                    
+                    // Simple animation feedback
+                    row.style.transform = 'translateY(1px)';
+                    setTimeout(() => {
+                        row.style.transform = 'translateY(0)';
+                    }, 100);
+                });
+            });
+
+            // Quick capture focus interaction
+            const quickCaptureInput = document.querySelector('input[type="text"]');
+            const quickCaptureContainer = quickCaptureInput.parentElement;
+
+            quickCaptureInput.addEventListener('focus', () => {
+                quickCaptureContainer.classList.add('border-cobalt');
+                quickCaptureContainer.classList.remove('border-hairline');
+            });
+
+            quickCaptureInput.addEventListener('blur', () => {
+                quickCaptureContainer.classList.add('border-hairline');
+                quickCaptureContainer.classList.remove('border-cobalt');
+            });
+        });
+    </script>
+</body></html>
