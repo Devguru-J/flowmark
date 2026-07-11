@@ -1,0 +1,81 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --surface-canvas: #fafaf9;
+  --surface-raised: #ffffff;
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+  --text-tertiary: #a8a29e;
+  --border-hairline: #e7e5e4;
+  --accent: #3b5bdb;
+  --accent-wash: #edf2ff;
+  --signal-danger: #c2410c;
+  --signal-warning: #b45309;
+  --signal-success: #15803d;
+}
+
+.dark {
+  --surface-canvas: #131110;
+  --surface-raised: #1e1b19;
+  --text-primary: #f5f5f4;
+  --text-secondary: #a8a29e;
+  --text-tertiary: #78716c;
+  --border-hairline: #2c2926;
+  --accent: #5c7cfa;
+  --accent-wash: rgba(92, 124, 250, 0.12);
+  --signal-danger: #e8794a;
+  --signal-warning: #d9930d;
+  --signal-success: #34a167;
+}
+
+@theme inline {
+  --color-canvas: var(--surface-canvas);
+  --color-raised: var(--surface-raised);
+  --color-ink: var(--text-primary);
+  --color-graphite: var(--text-secondary);
+  --color-fog: var(--text-tertiary);
+  --color-hairline: var(--border-hairline);
+  --color-cobalt: var(--accent);
+  --color-wash: var(--accent-wash);
+  --color-rust: var(--signal-danger);
+  --color-amber-signal: var(--signal-warning);
+  --color-green-signal: var(--signal-success);
+
+  --font-sans:
+    'Pretendard Variable', Pretendard, Geist, -apple-system, BlinkMacSystemFont, system-ui,
+    'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+html,
+body,
+#root {
+  min-height: 100dvh;
+}
+
+body {
+  background-color: var(--surface-canvas);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::placeholder {
+  color: var(--text-tertiary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
