@@ -21,11 +21,17 @@ export function LoginPage() {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors, isSubmitting },
   } = useForm<LoginValues>({ resolver: zodResolver(loginSchema) })
 
   const onSubmit = handleSubmit(async (values) => {
-    await login(values.email, values.password)
+    try {
+      await login(values.email, values.password)
+    } catch {
+      setError('root', { message: t('auth.loginFailed') })
+      return
+    }
     await navigate({ to: '/app/$view', params: { view: 'today' } })
   })
 
@@ -49,6 +55,11 @@ export function LoginPage() {
           error={errors.password ? t('auth.passwordMin') : undefined}
           {...register('password')}
         />
+        {errors.root ? (
+          <p role="alert" className="text-sm text-rust">
+            {errors.root.message}
+          </p>
+        ) : null}
         <button
           type="submit"
           disabled={isSubmitting}

@@ -7,6 +7,9 @@ import './features/settings/theme'
 import './index.css'
 import { queryClient } from './shared/lib/queryClient'
 import { router } from './router'
+import { initSession } from './features/auth/session'
+
+await initSession()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

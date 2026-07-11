@@ -29,6 +29,9 @@ export const ko = {
     emailInvalid: '올바른 이메일 주소를 입력해 주세요',
     passwordMin: '비밀번호는 8자 이상이어야 해요',
     nameRequired: '이름을 입력해 주세요',
+    loginFailed: '이메일 또는 비밀번호가 올바르지 않아요',
+    registerFailed: '가입에 실패했어요. 잠시 후 다시 시도해 주세요',
+    confirmEmailSent: '확인 이메일을 보냈어요. 메일함에서 인증한 뒤 로그인해 주세요.',
   },
   capture: {
     placeholder: '작업 추가…',

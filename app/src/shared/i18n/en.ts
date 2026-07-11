@@ -33,6 +33,9 @@ export const en: Messages = {
     emailInvalid: 'Enter a valid email address',
     passwordMin: 'Password must be at least 8 characters',
     nameRequired: 'Enter your name',
+    loginFailed: 'Incorrect email or password',
+    registerFailed: 'Sign-up failed. Please try again shortly',
+    confirmEmailSent: 'Confirmation email sent. Verify your address, then log in.',
   },
   capture: {
     placeholder: 'Add a task…',
